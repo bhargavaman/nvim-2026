@@ -12,3 +12,6 @@ vim.diagnostic.config({
     max_width = 80,
   },
 })
+
+-- No automatic comment insertion
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])

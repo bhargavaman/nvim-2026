@@ -1,8 +1,8 @@
 --: Mason
 vim.pack.add({
-	{ src = "https://github.com/mason-org/mason.nvim.git" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim.git" },
-	{ src = "https://github.com/neovim/nvim-lspconfig.git" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 })
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -18,7 +18,7 @@ vim.pack.add({
 
 --: Oil
 vim.pack.add({
-	{ src = "https://github.com/stevearc/oil.nvim.git" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
 })
 
 -- Declare a global function to retrieve the current directory
@@ -50,5 +50,18 @@ require("supermaven-nvim").setup({
 		accept_suggestion = "<C-j>",
 		accept_word = "<C-l>",
 	},
+})
+--:
+
+--: WhichKey
+vim.pack.add({
+  { src = "https://github.com/folke/which-key.nvim" },
+})
+local wk = require("which-key")
+wk.add({
+	mode = { "n", "v" },
+	{ "<leader>y", '"+y', desc = "Yank to clipboard" },
+	{ "<leader>Y", '"+Y', desc = "Yank line to clipboard" },
+	{ "<leader>p", '"+p', desc = "Paste from clipboard" },
 })
 --:
