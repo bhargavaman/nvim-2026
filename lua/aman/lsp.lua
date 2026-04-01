@@ -10,7 +10,7 @@ local default_keymaps = {
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto Definition", has = "definitionProvider" },
 }
 
-local completion = vim.g.completion_mode or "native" -- or 'native' for built-in completion
+local completion = vim.g.completion_mode or "blink" -- or 'native' for built-in completion
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup("lsp_attach"),
 	callback = function(args)
