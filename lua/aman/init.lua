@@ -1,6 +1,6 @@
 require("aman.set")
-require("aman.plugins")
-require("aman.diagnostics")
 require("aman.remap")
+require("aman.diagnostics")
 require("aman.misc")
 require("aman.lsp")
+require("aman.plugins")
