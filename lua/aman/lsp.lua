@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end
 
       -- Inlay hints
+      ---@diagnostic disable-next-line: param-type-mismatch
       if client:supports_method("textDocument/inlayHints") then
         vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
       end
