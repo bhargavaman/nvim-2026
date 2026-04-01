@@ -17,12 +17,12 @@ vim.pack.add({
 require("mini.surround").setup({
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
-    add = 'sa', -- Add surrounding in Normal and Visual modes
-    delete = 'sd', -- Delete surrounding
-    find = 'sf', -- Find surrounding (to the right)
-    find_left = 'sF', -- Find surrounding (to the left)
-    highlight = '', -- Highlight surrounding
-    replace = 'sr', -- Replace surrounding
+    add = '<leader>msa', -- Add surrounding in Normal and Visual modes
+    delete = '<leader>msd', -- Delete surrounding
+    find = '<leader>msf', -- Find surrounding (to the right)
+    find_left = '<leader>msF', -- Find surrounding (to the left)
+    highlight = '<leader>m', -- Highlight surrounding
+    replace = '<leader>msr', -- Replace surrounding
 
     suffix_last = '', -- Suffix to search with "prev" method
     suffix_next = '', -- Suffix to search with "next" method
@@ -80,8 +80,8 @@ wk.add({
 	{ "<leader>p", '"+p', desc = "Paste from clipboard" },
 })
 wk.add({
-	{ "<leader><tab>", group = "tabs" },
 	{ "<leader>c", group = "code" },
+	{ "<leader>m", group = "mini" },
 	{ "<leader>d", group = "debug" },
 	{ "<leader>D", group = "Diffview", icon = { icon = "", color = "orange" } },
 	{ "<leader>dp", group = "profiler" },
@@ -95,7 +95,6 @@ wk.add({
 	{ "[", group = "prev" },
 	{ "]", group = "next" },
 	{ "g", group = "goto" },
-	{ "gs", group = "surround" },
 	{ "z", group = "fold" },
 	{
 		"<leader>b",
