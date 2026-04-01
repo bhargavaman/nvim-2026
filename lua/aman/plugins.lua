@@ -73,6 +73,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
 })
 local wk = require("which-key")
+wk.setup({delay = 50})
 wk.add({
   mode = { "n", "v" },
   { "<leader>y", '"+y', desc = "Yank to clipboard" },
