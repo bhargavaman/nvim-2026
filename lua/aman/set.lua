@@ -25,7 +25,7 @@ o.showmode = false
 o.fillchars = { eob = " " }
 
 o.scrolloff = 8
-o.updatetime = 200
+o.updatetime = 100
 
 o.title = true
 o.showcmd = true
