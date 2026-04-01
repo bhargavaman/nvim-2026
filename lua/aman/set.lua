@@ -103,11 +103,11 @@ o.undofile = true -- Persistent undo
 
 -- Neovide
 if g.neovide then
-	o.guifont = "FiraCode Nerd Font:h20"
-	g.neovide_scroll_animation_length = 0.1
-	g.neovide_cursor_animation_length = 0.1
-	g.neovide_opacity = 0.9
-	g.neovide_normal_opacity = 0.9
+  o.guifont = "FiraCode Nerd Font:h20"
+  g.neovide_scroll_animation_length = 0.1
+  g.neovide_cursor_animation_length = 0.1
+  g.neovide_opacity = 0.9
+  g.neovide_normal_opacity = 0.9
 end
 
 -- Disable Surround default keymaps

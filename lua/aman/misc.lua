@@ -125,7 +125,7 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 vim.diagnostic.config({
   float = {
-    border = 'rounded',
+    border = "rounded",
     max_width = 80,
   },
 })

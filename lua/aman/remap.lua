@@ -51,7 +51,8 @@ map("i", "<", "<><left>")
 
 -- Quickfix and location lists
 map("n", "<leader>xl", function()
-  local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
+  local success, err =
+    pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
   if not success and err then
     vim.notify(err, vim.log.levels.ERROR)
   end

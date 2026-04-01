@@ -1,12 +1,12 @@
 --: Mason
 vim.pack.add({
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/mason-org/mason.nvim" },
+  { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
 })
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = {},
+  ensure_installed = {},
 })
 --:
 
@@ -17,53 +17,53 @@ vim.pack.add({
 require("mini.surround").setup({
   -- Module mappings. Use `''` (empty string) to disable one.
   mappings = {
-    add = '<leader>msa', -- Add surrounding in Normal and Visual modes
-    delete = '<leader>msd', -- Delete surrounding
-    find = '<leader>msf', -- Find surrounding (to the right)
-    find_left = '<leader>msF', -- Find surrounding (to the left)
-    highlight = '<leader>m', -- Highlight surrounding
-    replace = '<leader>msr', -- Replace surrounding
+    add = "<leader>msa", -- Add surrounding in Normal and Visual modes
+    delete = "<leader>msd", -- Delete surrounding
+    find = "<leader>msf", -- Find surrounding (to the right)
+    find_left = "<leader>msF", -- Find surrounding (to the left)
+    highlight = "<leader>m", -- Highlight surrounding
+    replace = "<leader>msr", -- Replace surrounding
 
-    suffix_last = '', -- Suffix to search with "prev" method
-    suffix_next = '', -- Suffix to search with "next" method
+    suffix_last = "", -- Suffix to search with "prev" method
+    suffix_next = "", -- Suffix to search with "next" method
   },
 })
 --:
 
 --: Oil
 vim.pack.add({
-	{ src = "https://github.com/stevearc/oil.nvim" },
+  { src = "https://github.com/stevearc/oil.nvim" },
 })
 
 -- Declare a global function to retrieve the current directory
 function _G.get_oil_winbar()
-	local dir = require("oil").get_current_dir()
-	if dir then
-		return vim.fn.fnamemodify(dir, ":~")
-	else
-		-- If there is no current directory (e.g. over ssh), just show the buffer name
-		return vim.api.nvim_buf_get_name(0)
-	end
+  local dir = require("oil").get_current_dir()
+  if dir then
+    return vim.fn.fnamemodify(dir, ":~")
+  else
+    -- If there is no current directory (e.g. over ssh), just show the buffer name
+    return vim.api.nvim_buf_get_name(0)
+  end
 end
 
 require("oil").setup({
-	win_options = {
-		winbar = "%!v:lua.get_oil_winbar()",
-	},
+  win_options = {
+    winbar = "%!v:lua.get_oil_winbar()",
+  },
 })
 
-vim.keymap.set('n', '<leader>e', "<CMD>Oil<CR>", {})
+vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", {})
 --:
 
 --: supermaven
 vim.pack.add({
-	{ src = "https://github.com/supermaven-inc/supermaven-nvim" },
+  { src = "https://github.com/supermaven-inc/supermaven-nvim" },
 })
 require("supermaven-nvim").setup({
   keymaps = {
-		accept_suggestion = "<C-j>",
-		accept_word = "<C-l>",
-	},
+    accept_suggestion = "<C-j>",
+    accept_word = "<C-l>",
+  },
 })
 --:
 
@@ -74,37 +74,37 @@ vim.pack.add({
 })
 local wk = require("which-key")
 wk.add({
-	mode = { "n", "v" },
-	{ "<leader>y", '"+y', desc = "Yank to clipboard" },
-	{ "<leader>Y", '"+Y', desc = "Yank line to clipboard" },
-	{ "<leader>p", '"+p', desc = "Paste from clipboard" },
+  mode = { "n", "v" },
+  { "<leader>y", '"+y', desc = "Yank to clipboard" },
+  { "<leader>Y", '"+Y', desc = "Yank line to clipboard" },
+  { "<leader>p", '"+p', desc = "Paste from clipboard" },
 })
 wk.add({
-	{ "<leader>c", group = "code" },
-	{ "<leader>m", group = "mini" },
-	{ "<leader>d", group = "debug" },
-	{ "<leader>D", group = "Diffview", icon = { icon = "", color = "orange" } },
-	{ "<leader>dp", group = "profiler" },
-	{ "<leader>f", group = "find" },
-	{ "<leader>g", group = "git" },
-	{ "<leader>gh", group = "hunks" },
-	{ "<leader>q", group = "quit/session" },
-	{ "<leader>s", group = "surround" },
-	{ "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
-	{ "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
-	{ "[", group = "prev" },
-	{ "]", group = "next" },
-	{ "g", group = "goto" },
-	{ "z", group = "fold" },
-	{
-		"<leader>b",
-		group = "buffer",
-		expand = function()
-			return require("which-key.extras").expand.buf()
-		end,
-	},
-	-- better descriptions
-	{ "gx", desc = "Open with system app" },
+  { "<leader>c", group = "code" },
+  { "<leader>m", group = "mini" },
+  { "<leader>d", group = "debug" },
+  { "<leader>D", group = "Diffview", icon = { icon = "", color = "orange" } },
+  { "<leader>dp", group = "profiler" },
+  { "<leader>f", group = "find" },
+  { "<leader>g", group = "git" },
+  { "<leader>gh", group = "hunks" },
+  { "<leader>q", group = "quit/session" },
+  { "<leader>s", group = "surround" },
+  { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
+  { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+  { "[", group = "prev" },
+  { "]", group = "next" },
+  { "g", group = "goto" },
+  { "z", group = "fold" },
+  {
+    "<leader>b",
+    group = "buffer",
+    expand = function()
+      return require("which-key.extras").expand.buf()
+    end,
+  },
+  -- better descriptions
+  { "gx", desc = "Open with system app" },
   {
     "<leader>?",
     function()
@@ -117,127 +117,127 @@ wk.add({
 
 --: Snacks
 vim.pack.add({
-	"https://github.com/folke/snacks.nvim",
-	"https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/folke/snacks.nvim",
+  "https://github.com/nvim-tree/nvim-web-devicons",
 })
 
 local Snacks = require("snacks")
 
 Snacks.setup({
-	animate = { enabled = true },
-	bigfile = { enabled = true },
-	dashboard = { enabled = false },
-	dim = { enabled = true },
-	explorer = { enabled = false, replace_netrw = false },
-	image = { enabled = true },
-	indent = { enabled = true },
-	input = { enabled = true },
-	layout = { enabled = true },
-	notifier = { enabled = true },
-	quickfile = { enabled = true },
-	scope = { enabled = true },
-	scratch = { enabled = true },
-	scroll = { enabled = false },
-	statuscolumn = { enabled = true },
-	terminal = { enabled = true },
-	toggle = { enabled = true },
-	words = { enabled = false },
-	zen = { enabled = false },
+  animate = { enabled = true },
+  bigfile = { enabled = true },
+  dashboard = { enabled = false },
+  dim = { enabled = true },
+  explorer = { enabled = false, replace_netrw = false },
+  image = { enabled = true },
+  indent = { enabled = true },
+  input = { enabled = true },
+  layout = { enabled = true },
+  notifier = { enabled = true },
+  quickfile = { enabled = true },
+  scope = { enabled = true },
+  scratch = { enabled = true },
+  scroll = { enabled = false },
+  statuscolumn = { enabled = true },
+  terminal = { enabled = true },
+  toggle = { enabled = true },
+  words = { enabled = false },
+  zen = { enabled = false },
 
-	picker = {
-		sources = {
-			files = {
-				hidden = true,
-				ignored = true,
-				win = {
-					input = {
-						keys = {
-							["<S-h>"] = "toggle_hidden",
-							["<S-i>"] = "toggle_ignored",
-							["<S-f>"] = "toggle_follow",
-							["<C-y>"] = { "yazi_copy_relative_path", mode = { "n", "i" } },
-						},
-					},
-				},
-				exclude = {
-					"**/.git/*",
-					"**/node_modules/*",
-					"**/.yarn/cache/*",
-					"**/.yarn/install*",
-					"**/.yarn/releases/*",
-					"**/.pnpm-store/*",
-					"**/.idea/*",
-					"**/.DS_Store",
-					"build/*",
-					"coverage/*",
-					"dist/*",
-					"hodor-types/*",
-					"**/target/*",
-					"**/public/*",
-					"**/digest*.txt",
-					"**/.node-gyp/**",
-				},
-			},
-			grep = {
-				hidden = true,
-				ignored = true,
-				win = {
-					input = {
-						keys = {
-							["<S-h>"] = "toggle_hidden",
-							["<S-i>"] = "toggle_ignored",
-							["<S-f>"] = "toggle_follow",
-						},
-					},
-				},
-				exclude = {
-					"**/.git/*",
-					"**/node_modules/*",
-					"**/.yarn/cache/*",
-					"**/.yarn/install*",
-					"**/.yarn/releases/*",
-					"**/.pnpm-store/*",
-					"**/.venv/*",
-					"**/.idea/*",
-					"**/.DS_Store",
-					"**/yarn.lock",
-					"build*/*",
-					"coverage/*",
-					"dist/*",
-					"certificates/*",
-					"hodor-types/*",
-					"**/target/*",
-					"**/public/*",
-					"**/digest*.txt",
-					"**/.node-gyp/**",
-				},
-			},
-			grep_buffers = {},
-			explorer = {
-				hidden = true,
-				ignored = true,
-				supports_live = true,
-				auto_close = true,
-				diagnostics = true,
-				diagnostics_open = false,
-				focus = "list",
-				follow_file = true,
-				git_status = true,
-				git_status_open = false,
-				git_untracked = true,
-				jump = { close = true },
-				tree = true,
-				watch = true,
-				exclude = {
-					".git",
-					".pnpm-store",
-					".venv",
-					".DS_Store",
-					"**/.node-gyp/**",
-				},
-			},
-		},
-	},
+  picker = {
+    sources = {
+      files = {
+        hidden = true,
+        ignored = true,
+        win = {
+          input = {
+            keys = {
+              ["<S-h>"] = "toggle_hidden",
+              ["<S-i>"] = "toggle_ignored",
+              ["<S-f>"] = "toggle_follow",
+              ["<C-y>"] = { "yazi_copy_relative_path", mode = { "n", "i" } },
+            },
+          },
+        },
+        exclude = {
+          "**/.git/*",
+          "**/node_modules/*",
+          "**/.yarn/cache/*",
+          "**/.yarn/install*",
+          "**/.yarn/releases/*",
+          "**/.pnpm-store/*",
+          "**/.idea/*",
+          "**/.DS_Store",
+          "build/*",
+          "coverage/*",
+          "dist/*",
+          "hodor-types/*",
+          "**/target/*",
+          "**/public/*",
+          "**/digest*.txt",
+          "**/.node-gyp/**",
+        },
+      },
+      grep = {
+        hidden = true,
+        ignored = true,
+        win = {
+          input = {
+            keys = {
+              ["<S-h>"] = "toggle_hidden",
+              ["<S-i>"] = "toggle_ignored",
+              ["<S-f>"] = "toggle_follow",
+            },
+          },
+        },
+        exclude = {
+          "**/.git/*",
+          "**/node_modules/*",
+          "**/.yarn/cache/*",
+          "**/.yarn/install*",
+          "**/.yarn/releases/*",
+          "**/.pnpm-store/*",
+          "**/.venv/*",
+          "**/.idea/*",
+          "**/.DS_Store",
+          "**/yarn.lock",
+          "build*/*",
+          "coverage/*",
+          "dist/*",
+          "certificates/*",
+          "hodor-types/*",
+          "**/target/*",
+          "**/public/*",
+          "**/digest*.txt",
+          "**/.node-gyp/**",
+        },
+      },
+      grep_buffers = {},
+      explorer = {
+        hidden = true,
+        ignored = true,
+        supports_live = true,
+        auto_close = true,
+        diagnostics = true,
+        diagnostics_open = false,
+        focus = "list",
+        follow_file = true,
+        git_status = true,
+        git_status_open = false,
+        git_untracked = true,
+        jump = { close = true },
+        tree = true,
+        watch = true,
+        exclude = {
+          ".git",
+          ".pnpm-store",
+          ".venv",
+          ".DS_Store",
+          "**/.node-gyp/**",
+        },
+      },
+    },
+  },
 })
 
 -- stylua: ignore start
@@ -338,21 +338,21 @@ local   keymaps = {
 }
 -- stylua: ignore end
 for _, map in ipairs(keymaps) do
-	local opts = { desc = map.desc }
-	if map.silent ~= nil then
-		opts.silent = map.silent
-	end
-	if map.noremap ~= nil then
-		opts.noremap = map.noremap
-	else
-		opts.noremap = true
-	end
-	if map.expr ~= nil then
-		opts.expr = map.expr
-	end
+  local opts = { desc = map.desc }
+  if map.silent ~= nil then
+    opts.silent = map.silent
+  end
+  if map.noremap ~= nil then
+    opts.noremap = map.noremap
+  else
+    opts.noremap = true
+  end
+  if map.expr ~= nil then
+    opts.expr = map.expr
+  end
 
-	local mode = map.mode or "n"
-	vim.keymap.set(mode, map[1], map[2], opts)
+  local mode = map.mode or "n"
+  vim.keymap.set(mode, map[1], map[2], opts)
 end
 --:
 
@@ -377,12 +377,20 @@ local renderOpts = {
     min_width = 0,
     border = false,
     backgrounds = {
-      "RenderMarkdownH1Bg", "RenderMarkdownH2Bg", "RenderMarkdownH3Bg",
-      "RenderMarkdownH4Bg", "RenderMarkdownH5Bg", "RenderMarkdownH6Bg",
+      "RenderMarkdownH1Bg",
+      "RenderMarkdownH2Bg",
+      "RenderMarkdownH3Bg",
+      "RenderMarkdownH4Bg",
+      "RenderMarkdownH5Bg",
+      "RenderMarkdownH6Bg",
     },
     foregrounds = {
-      "RenderMarkdownH1", "RenderMarkdownH2", "RenderMarkdownH3",
-      "RenderMarkdownH4", "RenderMarkdownH5", "RenderMarkdownH6",
+      "RenderMarkdownH1",
+      "RenderMarkdownH2",
+      "RenderMarkdownH3",
+      "RenderMarkdownH4",
+      "RenderMarkdownH5",
+      "RenderMarkdownH6",
     },
   },
   code = {
@@ -423,7 +431,17 @@ local renderOpts = {
     cell = "padded",
     padding = 1,
     border = {
-      "┌", "┬", "┐", "├", "┼", "┤", "└", "┴", "┘", "│", "─",
+      "┌",
+      "┬",
+      "┐",
+      "├",
+      "┼",
+      "┤",
+      "└",
+      "┴",
+      "┘",
+      "│",
+      "─",
     },
   },
   callout = {
@@ -440,18 +458,18 @@ require("render-markdown").setup(renderOpts)
 
 --: Flash
 vim.pack.add({
-	"https://github.com/folke/flash.nvim",
+  "https://github.com/folke/flash.nvim",
 })
 
 local flash = require("flash")
 flash.setup({
-	modes = {
-		-- Enhanced f, t, F, T motions
-		char = {
-			enabled = true,
-			jump_labels = true,
-		},
-	},
+  modes = {
+    -- Enhanced f, t, F, T motions
+    char = {
+      enabled = true,
+      jump_labels = true,
+    },
+  },
 })
 
 -- Keymaps
@@ -466,33 +484,73 @@ vim.keymap.set("c", "<c-s>", function() flash.toggle() end, { desc = "Toggle Fla
 
 --: Blink Cmp
 vim.pack.add({
-	{
-		src = "https://github.com/saghen/blink.cmp",
-		version = vim.version.range("^1"),
-	},
+  {
+    src = "https://github.com/saghen/blink.cmp",
+    version = vim.version.range("^1"),
+  },
 })
 
 -- Lazy load on first insert mode entry (may not necessary)
 local group = vim.api.nvim_create_augroup("BlinkCmpLazyLoad", { clear = true })
 
 vim.api.nvim_create_autocmd("InsertEnter", {
-	pattern = "*",
-	group = group,
-	once = true,
-	callback = function()
-		require("blink.cmp").setup({
-			keymap = { preset = "super-tab" },
-			appearance = {
-				nerd_font_variant = "mono",
-				use_nvim_cmp_as_default = true,
-			},
-			completion = {
-				documentation = { auto_show = false },
-			},
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-			},
-			fuzzy = { implementation = "prefer_rust_with_warning" },
-		})
-	end,
+  pattern = "*",
+  group = group,
+  once = true,
+  callback = function()
+    require("blink.cmp").setup({
+      keymap = { preset = "super-tab" },
+      appearance = {
+        nerd_font_variant = "mono",
+        use_nvim_cmp_as_default = true,
+      },
+      completion = {
+        documentation = { auto_show = false },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning" },
+    })
+  end,
 })
+--:
+
+--: Conform
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
+require("conform").setup({
+  -- Map of filetype to formatters
+  formatters_by_ft = {
+    lua = { "stylua" },
+    go = { "goimports-reviser", "gofumpt", "golines" },
+    javascript = { "biome" },
+    typescript = { "biome" },
+    vue = { "biome" },
+    astro = { "biome" },
+    html = { "biome" },
+    css = { "biome" },
+    json = { "biome" },
+    markdown = { "markdownlint" },
+    yaml = { "biome" },
+
+    -- Use the "*" filetype to run formatters on all files.
+    -- Note that if you use this, you may want to set lsp_fallback = "always"
+    -- (see :help conform.format)
+    ["*"] = {},
+  },
+  -- If this is set, Conform will run the formatter on save.
+  -- It will pass the table to conform.format().
+  format_on_save = {
+    -- I recommend these options. See :help conform.format for details.
+    lsp_fallback = false,
+    timeout_ms = 1000,
+    async = false,
+  },
+  -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+  log_level = vim.log.levels.ERROR,
+  -- Conform will notify you when a formatter errors
+  notify_on_error = true,
+  -- Define custom formatters here
+  formatters = {},
+})
+--:
