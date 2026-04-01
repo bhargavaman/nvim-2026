@@ -73,7 +73,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-tree/nvim-web-devicons" },
 })
 local wk = require("which-key")
-wk.setup({delay = 50})
+wk.setup({ delay = 50 })
 wk.add({
   mode = { "n", "v" },
   { "<leader>y", '"+y', desc = "Yank to clipboard" },
@@ -125,7 +125,7 @@ vim.pack.add({
 local Snacks = require("snacks")
 
 Snacks.setup({
-  animate = { enabled = true },
+  animate = { enabled = false },
   bigfile = { enabled = true },
   dashboard = { enabled = false },
   dim = { enabled = true },
@@ -140,8 +140,8 @@ Snacks.setup({
   scratch = { enabled = true },
   scroll = { enabled = false },
   statuscolumn = { enabled = true },
-  terminal = { enabled = true },
-  toggle = { enabled = true },
+  terminal = { enabled = false },
+  toggle = { enabled = false },
   words = { enabled = false },
   zen = { enabled = false },
 
@@ -264,7 +264,7 @@ local   keymaps = {
       end, desc = "Buffers",
     },
     -- find
-    { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
+    { "<leader>fo", function() Snacks.picker.buffers() end, desc = "Open Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
     { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
@@ -320,9 +320,8 @@ local   keymaps = {
     -- terminal
     { "<leader>fT", function() Snacks.terminal() end, desc = "Terminal (cwd)", mode = "n", },
     { "<leader>ft", function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal (Root Dir)",  mode = "n", },
-    { "<c-:>",  function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal (Root Dir)", mode = "n", },
+    { "<c-:>", function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal (Root Dir)", mode = "n", },
     { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
-    { "<c-_>", function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "which_key_ignore",  mode = "n", },
     -- Other
     { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
