@@ -12,6 +12,12 @@ wk.add({
   { "<leader>p", '"+p', desc = "Paste from clipboard" },
 })
 wk.add({
+  mode = { "n" },
+  { "p", "<Plug>(YankyPutAfter)", desc = "Yanky Paste" },
+  { "<c-p>", "<Plug>(YankyPreviousEntry)", desc = "Yanky Previous Entry" },
+  { "<c-n>", "<Plug>(YankyNextEntry)", desc = "Yanky Next Entry" },
+})
+wk.add({
   { "<leader>c", group = "code" },
   { "<leader>m", group = "mini" },
   { "<leader>d", group = "debug" },
