@@ -25,8 +25,6 @@ wk.add({
   { "<leader>dp", group = "profiler" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
-  { "<leader>gh", group = "hunks" },
-  { "<leader>q", group = "quit/session" },
   { "<leader>s", group = "surround" },
   { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
   { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
@@ -42,7 +40,6 @@ wk.add({
     end,
   },
   -- better descriptions
-  { "gx", desc = "Open with system app" },
   {
     "<leader>?",
     function()
