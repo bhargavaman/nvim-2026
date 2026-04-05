@@ -4,6 +4,7 @@ vim.pack.add({
     src = "https://github.com/saghen/blink.cmp",
     version = vim.version.range("^1"),
   },
+  { src = "https://github.com/L3MON4D3/LuaSnip" },
 })
 
 -- Lazy load on first insert mode entry (may not necessary)
@@ -22,12 +23,22 @@ vim.api.nvim_create_autocmd("InsertEnter", {
       },
       completion = {
         documentation = { auto_show = false },
+        menu = { auto_show = true },
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
-      fuzzy = { implementation = "prefer_rust_with_warning" },
+      snippets = {
+        expand = function(snippet)
+          require("luasnip").lsp_expand(snippet)
+        end,
+      },
+      fuzzy = { implementation = "prefer_rust_with_warning", prebuilt_binaries = { download = true } },
     })
+
+    vim.lsp.config["*"] = {
+      capabilities = require("blink.cmp").get_lsp_capabilities(),
+    }
   end,
 })
 --:

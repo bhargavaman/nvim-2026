@@ -200,9 +200,6 @@ local   keymaps = {
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete buffer", mode = { "n" }, },
     { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete other buffers", mode = { "n" }, },
     -- terminal
-    { "<leader>fT", function() Snacks.terminal() end, desc = "Terminal (cwd)", mode = "n", },
-    { "<leader>ft", function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal (Root Dir)",  mode = "n", },
-    { "<c-:>", function() Snacks.terminal(nil, { cwd = vim.fn.getcwd() }) end, desc = "Terminal (Root Dir)", mode = "n", },
     { "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
     -- Other
     { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
