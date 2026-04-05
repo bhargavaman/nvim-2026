@@ -16,7 +16,7 @@ o.smartindent = true
 o.autoindent = true
 o.winborder = "rounded"
 
-o.hlsearch = false
+o.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 o.termguicolors = true
@@ -35,9 +35,6 @@ o.ai = true
 o.si = true
 o.wildignore:append({ "*/node_modules/*" })
 
--- Clipboard
-o.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
-
 -- Highlights
 o.cursorline = true
 o.winblend = 0
@@ -55,6 +52,7 @@ o.incsearch = true
 o.conceallevel = 2
 o.confirm = true
 o.synmaxcol = 300
+o.selection = "inclusive"
 
 -- Folding settings
 vim.wo.foldmethod = "expr"
@@ -100,6 +98,7 @@ o.backup = false -- Don't create backup files
 o.writebackup = false -- Don't create backup before writing
 o.swapfile = false -- Don't create swap files
 o.undofile = true -- Persistent undo
+o.autoread = true -- Reload file when changed outside of vim
 
 -- Neovide
 if g.neovide then

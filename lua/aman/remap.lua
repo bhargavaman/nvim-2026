@@ -28,6 +28,12 @@ map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search R
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
 
+-- Better pane navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Pane left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Pane down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Pane up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Pane right" })
+
 -- Better paste (doesn't replace clipboard with deleted text)
 map("v", "p", '"_dP', opts)
 

@@ -25,7 +25,6 @@ wk.add({
   { "<leader>dp", group = "profiler" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
-  { "<leader>s", group = "surround" },
   { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
   { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
   { "[", group = "prev" },

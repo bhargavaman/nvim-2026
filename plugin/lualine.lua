@@ -42,14 +42,10 @@ require("lualine").setup({
           end
 
           local result = {}
-          -- Process all parts except the last one
-          for i = 1, #parts - 1 do
-            -- Take the first character of the directory name
-            table.insert(result, parts[i]:sub(1, 1))
+          -- Process all parts
+          for i = 1, #parts do
+            table.insert(result, parts[i])
           end
-
-          -- Add the full filename (the last part)
-          table.insert(result, parts[#parts])
 
           -- Join them all back together
           return table.concat(result, sep)
