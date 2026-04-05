@@ -4,7 +4,7 @@ require("conform").setup({
   -- Map of filetype to formatters
   formatters_by_ft = {
     lua = { "stylua" },
-    go = { "goimports-reviser", "gofumpt", "golines" },
+    go = { "gofumpt" },
     javascript = { "biome" },
     typescript = { "biome" },
     vue = { "biome" },
