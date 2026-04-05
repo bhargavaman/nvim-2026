@@ -15,4 +15,7 @@ require("mini.surround").setup({
     suffix_next = "", -- Suffix to search with "next" method
   },
 })
+require("mini.ai").setup({})
+require("mini.notify").setup({})
+require("mini.pairs").setup({})
 --:
