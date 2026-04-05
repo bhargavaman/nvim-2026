@@ -21,6 +21,10 @@
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"
     },
+    "gitsigns.nvim": {
+      "rev": "4e34ff26875b92167d47038bd83a11026d57dcd8",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "lualine.nvim": {
       "rev": "47f91c416daef12db467145e16bed5bbfe00add8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
