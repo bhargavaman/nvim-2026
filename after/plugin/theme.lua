@@ -2,7 +2,7 @@ vim.cmd([[colorscheme catppuccin]])
 
 local function set_transparent() -- set UI component to transparent
   local groups = {
-    "Normal",
+    --"Normal",
     "NormalNC",
     "EndOfBuffer",
     "NormalFloat",
