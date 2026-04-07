@@ -18,7 +18,7 @@ Snacks.setup({
   input = { enabled = true },
   layout = { enabled = false },
   notifier = { enabled = true },
-  notify = { enabled = true },
+  notify = { enabled = false },
   profiler = { enabled = true },
   quickfile = { enabled = true },
   scope = { enabled = true },
