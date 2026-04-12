@@ -17,6 +17,10 @@
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "cyberdream.nvim": {
+      "rev": "39f69ebcd8de69c741bb7a65353aa37dd0680ad1",
+      "src": "https://github.com/bhargavaman/cyberdream.nvim"
+    },
     "flash.nvim": {
       "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
       "src": "https://github.com/folke/flash.nvim"
@@ -82,6 +86,10 @@
     "tiny-inline-diagnostic.nvim": {
       "rev": "ba133b3e932416e4b9507095731a6d7276878fe8",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
+    },
+    "tokyodark.nvim": {
+      "rev": "659aff3c73dc2e0159314050a81671f0b2eaad01",
+      "src": "https://github.com/tiagovla/tokyodark.nvim"
     },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
