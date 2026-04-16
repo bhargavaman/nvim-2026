@@ -17,11 +17,6 @@ wk.add({
   { "<c-p>", "<Plug>(YankyPreviousEntry)", desc = "Yanky Previous Entry" },
   { "<c-n>", "<Plug>(YankyNextEntry)", desc = "Yanky Next Entry" },
   { "<leader>D", group = "Debug" },
-  { "<leader>DB", "<cmd>:DapToggleBreakpoint<CR>", desc = "Toggle breakpoint" },
-  { "<leader>DK", "<cmd>:DapTerminate<CR>", desc = "Kill" },
-  { "<leader>DN", "<cmd>:DapStepOver<CR>", desc = "Step Over" },
-  { "<leader>DS", "<cmd>:DapContinue<CR>", desc = "Start" },
-  { "<leader>DU", "<cmd>lua require('dapui').toggle()<CR>", desc = "Toggle UI" },
 })
 wk.add({
   { "<leader>c", group = "code" },
