@@ -50,12 +50,28 @@ local function init_dap()
   local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
   for _, ft in ipairs(js_filetypes) do
     dap.configurations[ft] = {
+      -- Launch node app option
       {
         type = "pwa-node",
         request = "launch",
         name = "Nvim Debug App",
         program = "${file}",
         cwd = vim.fn.getcwd(),
+      },
+      -- Or attach to running node app (below)
+      -- pnpm run debug
+      -- debug: node --inspect=9229
+      {
+        type = "pwa-node",
+        request = "attach",
+        name = "Attach to Running Node App",
+        port = 9229,
+        address = "localhost",
+        localRoot = vim.fn.getcwd(),
+        remoteRoot = "/usr/src/app",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
       },
       {
         type = "pwa-node",
