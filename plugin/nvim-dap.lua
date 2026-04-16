@@ -17,72 +17,69 @@ local function init_dap()
   local dap = require("dap")
   local dapui = require("dapui")
 
-  -- local js_debug_path = vim.fn.expand("$HOME/vscode-js-debug/out/src/dapDebugServer.js")
-  -- dap.adapters["pwa-node"] = {
-  -- 	type = "server",
-  -- 	host = "localhost",
-  -- 	port = "${port}",
-  -- 	executable = {
-  -- 		command = "node",
-  -- 		args = { js_debug_path, "${port}" },
-  -- 	},
-  -- }
-  -- dap.adapters["node"] = function(cb, config)
-  -- 	if config.type == "node" then
-  -- 		config.type = "pwa-node"
-  -- 	end
-  -- 	local a = dap.adapters["pwa-node"]
-  -- 	if type(a) == "function" then
-  -- 		a(cb, config)
-  -- 	else
-  -- 		cb(a)
-  -- 	end
-  -- end
-  --
-  -- -- Disable default nvim-dap behavior of automatically loading .vscode/launch.json
-  -- dap.providers.configs["dap.launch.json"] = function()
-  -- 	return {}
-  -- end
-  --
-  -- -- JS/TS configurations based on user's launch.json
-  -- local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
-  -- for _, ft in ipairs(js_filetypes) do
-  -- 	dap.configurations[ft] = {
-  -- 		{
-  -- 			type = "pwa-node",
-  -- 			request = "attach",
-  -- 			name = "Nvim Debug App",
-  -- 			port = 9229,
-  -- 			address = "localhost",
-  -- 			localRoot = vim.fn.getcwd(),
-  -- 			remoteRoot = "/usr/src/app",
-  -- 			sourceMaps = true,
-  -- 			protocol = "inspector",
-  -- 			cwd = vim.fn.getcwd(),
-  -- 		},
-  -- 		{
-  -- 			type = "pwa-node",
-  -- 			request = "launch",
-  -- 			name = "Nvim Mocha Tests",
-  -- 			program = vim.fn.getcwd() .. "/node_modules/mocha/bin/_mocha",
-  -- 			args = {
-  -- 				"--require",
-  -- 				"ts-node/register/transpile-only",
-  -- 				"--require",
-  -- 				"source-map-support/register",
-  -- 				"--reporter",
-  -- 				"spec",
-  -- 				"--colors",
-  -- 				vim.fn.getcwd() .. "/tests/unit/**/*.[tj]s",
-  -- 			},
-  -- 			internalConsoleOptions = "openOnSessionStart",
-  -- 			skipFiles = { "<node_internals>/**" },
-  -- 			sourceMaps = true,
-  -- 			protocol = "inspector",
-  -- 			cwd = vim.fn.getcwd(),
-  -- 		},
-  -- 	}
-  -- end
+  local js_debug_path =
+    vim.fn.expand("$HOME/.local/share/nvim/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js")
+  dap.adapters["pwa-node"] = {
+    type = "server",
+    host = "localhost",
+    port = "${port}",
+    executable = {
+      command = "node",
+      args = { js_debug_path, "${port}" },
+    },
+  }
+  -- alias node to pwa-node
+  dap.adapters["node"] = function(cb, config)
+    if config.type == "node" then
+      config.type = "pwa-node"
+    end
+    local a = dap.adapters["pwa-node"]
+    if type(a) == "function" then
+      a(cb, config)
+    else
+      cb(a)
+    end
+  end
+
+  -- Disable default nvim-dap behavior of automatically loading .vscode/launch.json
+  dap.providers.configs["dap.launch.json"] = function()
+    return {}
+  end
+
+  -- JS/TS configurations based on user's launch.json
+  local js_filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" }
+  for _, ft in ipairs(js_filetypes) do
+    dap.configurations[ft] = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Nvim Debug App",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+      },
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Nvim Mocha Tests",
+        program = vim.fn.getcwd() .. "/node_modules/mocha/bin/_mocha",
+        args = {
+          "--require",
+          "ts-node/register/transpile-only",
+          "--require",
+          "source-map-support/register",
+          "--reporter",
+          "spec",
+          "--colors",
+          vim.fn.getcwd() .. "/tests/unit/**/*.[tj]s",
+        },
+        internalConsoleOptions = "openOnSessionStart",
+        skipFiles = { "<node_internals>/**" },
+        sourceMaps = true,
+        protocol = "inspector",
+        cwd = vim.fn.getcwd(),
+      },
+    }
+  end
 
   -- DAP UI setup
   dapui.setup({
