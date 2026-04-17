@@ -1,8 +1,10 @@
 vim.pack.add({
-  { src = "https://github.com/mfussenegger/nvim-dap", version = "b516f20b487b0ac6a281e376dfac1d16b5040041" },
+  "https://github.com/mfussenegger/nvim-dap",
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/nvim-neotest/nvim-nio",
   "https://github.com/theHamsta/nvim-dap-virtual-text",
+  "https://github.com/leoluz/nvim-dap-go",
+  "https://github.com/igorlfs/nvim-dap-view",
 })
 
 local _dap_initialized = false
@@ -130,7 +132,13 @@ local function init_dap()
   end
 
   -- -- Virtual text
-  require("nvim-dap-virtual-text").setup()
+  require("nvim-dap-virtual-text").setup({})
+
+  -- Go configurations
+  require("dap-go").setup({})
+
+  -- DAP View Option 2
+  require("dap-view").setup({})
 end
 
 -- stylua: ignore start
@@ -155,3 +163,4 @@ vim.keymap.set("n", "<leader>DT", function()
 end, { desc = "Terminate" })
 vim.keymap.set("n", "<leader>DW", function() init_dap(); require("dap.ui.widgets").hover() end, { desc = "DAP Widgets" })
 vim.keymap.set("n","<leader>DU", function() init_dap(); require("dapui").toggle({}) end, {desc = "Dap UI"})
+vim.keymap.set("n","<leader>DV", function() init_dap(); require("dap-view").toggle({}) end, {desc = "Dap View"})
