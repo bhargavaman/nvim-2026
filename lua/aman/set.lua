@@ -64,6 +64,9 @@ o.grepprg = "rg --vimgrep"
 -- Better diff
 o.diffopt:append("linematch:60")
 
+-- Popup for completion opts
+o.completeopt:append("popup")
+
 -- Performance improvements
 o.redrawtime = 10000
 o.maxmempattern = 20000

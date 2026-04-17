@@ -3,6 +3,22 @@ vim.pack.add({
   { src = "https://github.com/nvim-lualine/lualine.nvim" },
 })
 
+-- show lsp progress
+local function progress_status()
+  local status = vim.lsp.status()
+  if status == nil or status == "" then
+    return "" -- lualine hides nil automatically
+  end
+  return "󱥸 " .. status
+end
+
+-- Refresh when native LSP progress updates arrive.
+vim.api.nvim_create_autocmd("LspProgress", {
+  callback = function()
+    require("lualine").refresh()
+  end,
+})
+
 require("lualine").setup({
   options = {
     theme = "auto",
@@ -52,8 +68,8 @@ require("lualine").setup({
         end,
       },
     },
-    lualine_x = { "diagnostics", "filetype" },
-    lualine_y = { "progress" },
+    lualine_x = { progress_status },
+    lualine_y = { "diagnostics", "filetype" },
     lualine_z = { "location" },
   },
   tabline = {

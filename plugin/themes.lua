@@ -88,7 +88,7 @@ require("cyberdream").setup({
 
   -- Disable or enable colorscheme extensions
   extensions = {
-    notify = true,
+    notify = false,
     mini = true,
     blinkcmp = true,
     dapui = true,
