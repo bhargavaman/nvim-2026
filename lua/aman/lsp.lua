@@ -3,11 +3,17 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
 end
 
+local function toggle_inlay_hints()
+  local enabled = vim.lsp.inlay_hint.is_enabled()
+  vim.lsp.inlay_hint.enable(not enabled)
+end
+
 local default_keymaps = {
   { keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code Actions" },
   { keys = "<leader>cr", func = vim.lsp.buf.rename, desc = "Code Rename" },
   { keys = "K", func = vim.lsp.buf.hover, desc = "Hover Docs", has = "hoverProvider" },
   { keys = "gd", func = vim.lsp.buf.definition, desc = "Goto Definition", has = "definitionProvider" },
+  { keys = "<leader>ti", func = toggle_inlay_hints, desc = "Toggle Inlay Hints" },
 }
 
 local completion = vim.g.completion_mode or "blink" -- or 'native' for built-in completion

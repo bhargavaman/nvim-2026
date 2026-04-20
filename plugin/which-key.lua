@@ -23,6 +23,7 @@ wk.add({
   { "<leader>m", group = "mini" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
+  { "<leader>t", group = "toggle", icon = { icon = "󱖫 ", color = "magenta" } },
   { "<leader>u", group = "user", icon = { icon = "󰙵 ", color = "cyan" } },
   { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
   { "<leader>z", "zf%", desc = "Fold to matching parenthesis" },
