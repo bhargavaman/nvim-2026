@@ -1,41 +1,38 @@
-local function visual_to_json()
-  -- get visual selection range
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
+local function lines_to_json()
+  local buf = 0
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
 
-  local lines = vim.api.nvim_buf_get_lines(0, start_pos[2] - 1, end_pos[2], false)
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
 
-  local result = {}
+  -- convert to 0-index
+  start_line = start_line - 1
+
+  local lines = vim.api.nvim_buf_get_lines(buf, start_line, end_line, false)
+  local out = { "{" }
+  local first = true
 
   for _, line in ipairs(lines) do
-    -- trim line
     line = line:gsub("^%s+", ""):gsub("%s+$", "")
-
     if line ~= "" then
       local key, value = line:match("^(%S+)%s*(.*)$")
-
       if key then
         if value == nil or value == "" then
           value = ""
         end
-        result[key] = value
+        if not first then
+          out[#out] = out[#out] .. ","
+        end
+        table.insert(out, string.format('  "%s": "%s"', key, value))
+        first = false
       end
     end
   end
 
-  -- convert to pretty JSON
-  local json = vim.fn.json_encode(result)
-  json = vim.fn.json_encode(vim.fn.json_decode(json)) -- normalize
-  json = vim.fn.json_encode(result)
-
-  -- optional: make pretty
-  json = vim.fn.system("jq .", json)
-
-  local new_lines = vim.split(json, "\n")
-
-  -- replace selection
-  vim.api.nvim_buf_set_lines(0, start_pos[2] - 1, end_pos[2], false, new_lines)
+  table.insert(out, "}")
+  vim.api.nvim_buf_set_lines(buf, start_line, end_line, false, out)
 end
 
--- keymap
-vim.keymap.set("v", "<leader>mj", visual_to_json, { desc = "Visual to JSON" })
+vim.keymap.set("x", "<leader>mj", lines_to_json)
