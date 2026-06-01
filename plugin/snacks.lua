@@ -131,7 +131,7 @@ Snacks.setup({
 })
 
 -- stylua: ignore start
-local   keymaps = {
+local keymaps = {
     -- Top Pickers & Explorer
     { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
@@ -154,7 +154,6 @@ local   keymaps = {
     -- find
     { "<leader>fo", function() Snacks.picker.buffers() end, desc = "Open Buffers" },
     { "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
-    { "<leader>ff", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fa", function() Snacks.picker.files() end, desc = "Find All Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },

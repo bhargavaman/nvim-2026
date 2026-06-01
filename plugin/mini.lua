@@ -20,4 +20,48 @@ require("mini.ai").setup({})
 require("mini.pairs").setup({})
 require("mini.trailspace").setup({})
 require("mini.bufremove").setup({})
+require("mini.pick").setup({
+  window = {
+    config = function()
+      local height = math.floor(0.618 * vim.o.lines)
+      local width = math.floor(0.618 * vim.o.columns)
+      return {
+        anchor = "NW",
+        height = height,
+        width = width,
+        row = math.floor(0.5 * (vim.o.lines - height)),
+        col = math.floor(0.5 * (vim.o.columns - width)),
+      }
+    end,
+  },
+})
+require("mini.extra").setup({})
+
+-- add all keymaps here
+local keymaps = {
+  {
+    "<leader>ff",
+    function()
+      require("mini.pick").builtin.files({ tool = "git" })
+    end,
+    desc = "Find Git Files",
+  },
+}
+for _, map in ipairs(keymaps) do
+  local opts = { desc = map.desc }
+  if map.silent ~= nil then
+    opts.silent = map.silent
+  end
+  if map.noremap ~= nil then
+    opts.noremap = map.noremap
+  else
+    opts.noremap = true
+  end
+  if map.expr ~= nil then
+    opts.expr = map.expr
+  end
+
+  local mode = map.mode or "n"
+  vim.keymap.set(mode, map[1], map[2], opts)
+end
 --:
