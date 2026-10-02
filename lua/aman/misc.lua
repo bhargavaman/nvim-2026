@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- Set filetype for .toml files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   group = augroup("toml_filetype"),
-  pattern = { "*.tomg-config*" },
+  pattern = { "*.toml-config*" },
   callback = function()
     vim.opt_local.filetype = "toml"
   end,
@@ -122,10 +122,3 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 -- No automatic comment insertion
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
-
-vim.diagnostic.config({
-  float = {
-    border = "rounded",
-    max_width = 80,
-  },
-})

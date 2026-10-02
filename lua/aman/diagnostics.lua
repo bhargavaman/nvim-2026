@@ -28,11 +28,14 @@ vim.diagnostic.config({
   underline = true,
   severity_sort = true,
   update_in_insert = false, -- less flicker
+  jump = { float = true },
   float = {
     border = "rounded",
     source = true,
+    max_width = 80,
   },
-  -- keep signs & virtual text, but tune them as you like
+  -- signs stay on; built-in virtual text is disabled because
+  -- tiny-inline-diagnostic.nvim renders inline diagnostics instead
   signs = {
     text = {
       [sev.ERROR] = " ",
@@ -41,12 +44,8 @@ vim.diagnostic.config({
       [sev.HINT] = "󰌵 ",
     },
   },
-  virtual_text = {
-    spacing = 4,
-    source = "if_many",
-    prefix = "●",
-  },
-  -- NEW in 0.11 — dim whole line
+  virtual_text = false,
+  -- dim whole line (Neovim 0.11+)
   linehl = {
     [sev.ERROR] = "DiagnosticErrorLine",
     [sev.WARN] = "DiagnosticWarnLine",

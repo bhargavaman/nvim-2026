@@ -54,11 +54,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
-
-local ts_server = vim.g.lsp_typescript_server or "vtsls"
-
--- Load Lsp on-demand, e.g: eslint is disable by default
--- e.g: We could enable eslint by set vim.g.lsp_on_demands = {"eslint"}
-if vim.g.lsp_on_demands then
-  vim.lsp.enable(vim.g.lsp_on_demands)
-end

@@ -78,7 +78,6 @@ if vim.fn.isdirectory(undodir) == 0 then
 end
 
 vim.g.autoformat = true
-vim.g.trouble_lualine = true
 
 vim.g.markdown_recommended_style = 0
 
