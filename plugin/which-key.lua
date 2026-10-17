@@ -20,6 +20,7 @@ wk.add({
 })
 wk.add({
   { "<leader>c", group = "code" },
+  { "<leader>h", group = "herdr" },
   { "<leader>m", group = "mini" },
   { "<leader>f", group = "find" },
   { "<leader>g", group = "git" },
